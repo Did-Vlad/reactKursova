@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import './App.css';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Header from "./Components/Dashboard";
+import Dashboard from "./Components/Dashboard";
 import Main from "./Components/Main";
-import Footer from "./Components/EmployeeDetails";
+import EmployeeDetails from "./Components/EmployeeDetails.jsx";
 
 const initialEmployee = [
 {id: 1, name:"Анна Ковальчук", position: "Fullstack Developer", salary: "55000", experience: "4 years", skills: ["React", "Laravel", "SQL"], img: "https://xsgames.co/randomusers/assets/avatars/male/1.jpg", description: "Відповідає за архітектуру бази даних."}, 
