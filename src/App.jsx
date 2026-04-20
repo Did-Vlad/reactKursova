@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import './App.css';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Dashboard from "./Components/Dashboard";
-import Main from "./Components/Main";
+import Employee from "./Components/Employee";
 import EmployeeDetails from "./Components/EmployeeDetails.jsx";
 
 const initialEmployee = [
@@ -29,7 +29,7 @@ return(
 
     <Routes>
     <Route path="/" element={<Dashboard employees = {employees}/>}/>
-    <Route path="/employees" element={<Main items = {employees}/>}/>
+    <Route path="/employees" element={<Employee items = {employees}/>}/>
     <Route path="/employee/:id" element={<EmployeeDetails employees = {employees}/>}/>
     </Routes>
       </BrowserRouter>
