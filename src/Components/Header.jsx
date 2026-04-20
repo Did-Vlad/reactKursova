@@ -11,8 +11,6 @@ function Header ({count, total}){
         <li className="nav-item"><a className="nav-link" href="#">Каталог</a></li>
          <li className="nav-item"><a className="nav-link" href="#">Про нас</a></li>
      </ul>
-
-<div className="navbar-text text-white">Користувач: Vlad | Сума: <strong className="text-success">{total} грн</strong></div>
     </div>
     </nav>
 </header>
