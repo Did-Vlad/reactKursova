@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import EmployeeCard from "./EmployeeCard"; 
+import EmployeeCard from "./EmpolyeeCard"; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Main({items}) {
