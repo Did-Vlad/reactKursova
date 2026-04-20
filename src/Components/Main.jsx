@@ -30,6 +30,19 @@ function Main({items}) {
     return () => clearInterval(interval);
   }, [reportDeadline]);
 
-}
+};
+
+const formatTime = (seconds) => {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+};
+
+const projects = ["All", ...new Set(items.map(emp => EmployeeCard.projects))]; //Весь список унікальних проєктів з масиву Empoyee.
+
+const filterforProject = items.filter((emp) =>{
+  if (selectProject === "All") return true;
+  return emp.projects === selectProject;
+}); //Фільтр співробітників по проєктам.
 
 export default Main;
