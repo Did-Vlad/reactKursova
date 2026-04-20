@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import EmployeeCard from "./EmployeeCard";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function Main({ items }) {
+function Main({ items = [] }) {
   const [isLoading, setIsLoading] = useState(true);
   const [reportDeadline, setReportDeadline] = useState(600);
   const [selectProject, setSelectedProject] = useState("All");
