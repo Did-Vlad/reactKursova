@@ -68,8 +68,10 @@ function Main({ items }) {
             value={selectProject}
             onChange={(e) => setSelectedProject(e.target.value)}>
             {projects.map((proj, index) => (
-              <option key={index} value={proj}>
-                {proj}
+              <option 
+              key={index} 
+              value={proj}>
+              {proj}
               </option>
             ))}
           </select>
