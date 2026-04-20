@@ -26,4 +26,4 @@ function EmployeeCard({name, position, project, salary, img, experience }){
 </div>
     );
 }
-export default EmployeeCard
+export default EmployeeCard;
