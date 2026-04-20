@@ -21,7 +21,7 @@ return(
         <div className="col-md-8">
             <div className="card-body p-4">
                 <h1 className="card-title fw-bold mb-0">{employee.name}</h1>
-                <p className="text-primary fs-5 mb-3">{mployee.position}</p>
+                <p className="text-primary fs-5 mb-3">{Employee.position}</p>
                 <hr/>
                 <div className="row mt-3">
                     <div className="col-sm-6">
