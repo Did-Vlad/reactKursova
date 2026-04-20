@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function Main({items}) {
   const [isLoading, setIsLoading] = useState(true);
   const [reportDeadline, setReportDedline] = useState(600);
-  const [selectProject, ,setSelect] = useState("All"); //стани для фільтрацій по проєктам 
+  const [selectProject, ,setSelectedProject] = useState("All"); //стани для фільтрацій по проєктам 
 
   useEffect(() => {
     const timer = setTimeout (() =>{
@@ -38,7 +38,7 @@ const formatTime = (seconds) => {
   return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
 };
 
-const projects = ["All", ...new Set(items.map(emp => EmployeeCard.projects))]; //Весь список унікальних проєктів з масиву Empoyee.
+const projects = ["All", ...new Set(items.map(emp => emp.projects))]; //Весь список унікальних проєктів з масиву Empoyee.
 
 const filterforProject = items.filter((emp) =>{
   if (selectProject === "All") return true;
