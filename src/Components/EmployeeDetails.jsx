@@ -1,41 +1,42 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 function EmployeeDetails({employees}) {
-    const {id} = useParams(); //береться id з посилання /employee/1
-    const employee = employee.find((emp) => emp.id === parseInt(id));
-    
+    const {id} = useParams(); 
+    const employee = employees.find((item) => item.id === Number(id));
+
     if (!employee) {
-        return <div className="container mt-5 text-center"><h3>Employee couldn't be found</h3></div>;
+        return <div className="container mt-5 text-center"><h3>Employee couldn't be found</h3>
+        <Link to="/employees" className="btn btn-primary mt-3">Return to list</Link>
+        </div>;     
     }
 
-
 return(
- <div className="container mt-4">
-    <Link to = "/emplyees" className= "btn outline-secondary mb-4 btn-sm"> Back to the list </Link>
-    <div className="card shadow border-0 overflow-hidden"></div>
-    <div className="row g-0">
-    <div className="col-md-4">
-        <img src={employee.img} className="img-fluid h-100" style={{objectFit:'cover'}} alt="employee.name"/>
-    </div>
-        <div className="col-md-8">
-            <div className="card-body p-4">
-                <h1 className="card-title fw-bold mb-0">{employee.name}</h1>
-                <p className="text-primary fs-5 mb-3">{Employee.position}</p>
-                <hr/>
-                <div className="row mt-3">
-                    <div className="col-sm-6">
-                        <p><strong>Experience:</strong> {employee.experience}</p>
-                        <p><strong>Salary:</strong>{employee.salary.toLocalString()} UAH</p>
-                    </div>
-                    <div className="col-sm-6">
-                        <p><strong>Skills:</strong>{employee.descriprion}</p>
-                    </div>
-                </div>
-            </div>
+<div className="card p-4 shadow-sm">
+<div className="row">
+    <div className="col-md-12">
+    <h1>{employee.first_name} {employee.last_name} {employee.midl_name || ""}</h1>
+     <h4 className="text-muted mb-4">{employee.status}</h4>
+
+    <hr />
+        
+<div className="row">
+ <div className="col-md-6">
+    <p><strong>Email:</strong> {employee.email}</p>
+    <p><strong>Телефон:</strong> {employee.phone}</p>
+  </div>
+  <div className="col-md-6">
+    <p><strong>ID:</strong> {employee.id}</p>
+    <p><strong>Дата найму:</strong> {employee.hire_date}</p>
+   </div>
+</div>
+
+<div className="mt-3">
+    <span className={`badge ${employee.status === 'Активний' ? 'bg-success' : 'bg-danger'}`}>{employee.status}</span>
         </div>
+      </div>
     </div>
- </div>
+  </div>
 );
 }
 export default EmployeeDetails;

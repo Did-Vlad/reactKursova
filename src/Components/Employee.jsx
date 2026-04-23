@@ -1,26 +1,22 @@
 import React, { useState, useEffect } from "react";
 import EmployeeCard from "./EmployeeCard";
+import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function Main({ items }) {
-  // 1. Дебаг: подивись у консоль, чи приходять сюди взагалі дані
-  console.log("Дані, отримані в Main:", items);
-
+function Main({ employees }) {
   const [isLoading, setIsLoading] = useState(true);
-  const [selectProject, setSelectedProject] = useState("All");
+  const [filterStatus, setFilterStatus] = useState("All");
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 1500);
     return () => clearTimeout(timer);
   }, []);
 
-  // Безпечна обробка масиву, якщо items раптом undefined
-  const safeItems = items || [];
-  const projects = ["All", ...new Set(safeItems.map((emp) => emp.projects))];
+  const safeEmployees = employees || [];
 
-  const filteredEmployees = safeItems.filter((emp) => {
-    if (selectProject === "All") return true;
-    return emp.projects === selectProject;
+  const filteredEmployees = safeEmployees.filter((emp) => {
+    if (filterStatus === "All") return true;
+    return emp.status === filterStatus;
   });
 
   if (isLoading) {
@@ -31,10 +27,8 @@ function Main({ items }) {
     );
   }
 
-  // Твій основний рендер
   return (
     <main className="container pb-5">
-      {/* --- ТУТ ТВОЄ ВІТАННЯ --- */}
       <div className="p-5 mb-4 bg-light rounded-3 shadow-sm border">
         <div className="container-fluid py-3">
           <h1 className="display-5 fw-bold">Hello and welcome!</h1>
@@ -43,14 +37,19 @@ function Main({ items }) {
           </p>
         </div>
       </div>
-      {/* ------------------------- */}
 
       <div className="row align-items-center mb-4">
-        <div className="col-md-5">
-           {/* ... твій селект ... */}
-           <select className="form-select" value={selectProject} onChange={(e) => setSelectedProject(e.target.value)}>
-             {projects.map((proj, index) => <option key={index} value={proj}>{proj}</option>)}
-           </select>
+        <div className="col-md-4">
+          <label className="mb-2">Фільтр за статусом:</label>
+          <select 
+            className="form-select" 
+            value={filterStatus} 
+            onChange={(e) => setFilterStatus(e.target.value)}
+          >
+            <option value="All">All employees</option>
+            <option value="Активний">Active</option>
+            <option value="Звільнений">Fired</option>
+          </select>
         </div>
       </div>
 
