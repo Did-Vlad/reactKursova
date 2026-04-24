@@ -34,6 +34,9 @@ return(
 <div className="mt-3">
     <span className={`badge ${employee.status === 'Активний' ? 'bg-success' : 'bg-danger'}`}>{employee.status}</span>
         </div>
+        <div className="mt-4">
+          <Link to="/employees" className="btn btn-secondary">Back to list</Link>
+        </div>
       </div>
     </div>
   </div>

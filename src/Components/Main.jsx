@@ -1,43 +1,17 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
-function Main({ employees, projects = [] }) {
-  const stats = useMemo(() => {
-    const totalEmployees = employees.length;
-    const activeEmployees = employees.filter((e) => e.status === "Активний").length;
-    const totalBudget = projects.reduce((acc, proj) => acc + (proj.budget || 0), 0);
-
-    return { totalEmployees, activeEmployees, totalBudget };
-  }, [employees, projects]);
-
+function Main() {
   return (
-    <main className="container py-5">
+    <main className="container py-5 text-center">
       <div className="p-5 mb-5 bg-primary text-white rounded-3 shadow">
-        <h1 className="display-4 fw-bold">Hello!</h1>
-        <p className="lead">Welcome to Hr-Portal. Manage your team easily.</p>
-        <Link to="/employees" className="btn btn-light btn-lg mt-3">View all employees</Link>
-      </div>
-
-      <div className="row g-4 mb-5">
-        <div className="col-md-4">
-          <div className="card shadow-sm border-0 p-4 text-center">
-            <h5 className="text-muted">Total Employees</h5>
-            <h2 className="display-5 fw-bold text-success">{stats.totalEmployees}</h2>
-          </div>
-        </div>
-
-        <div className="col-md-4">
-          <div className="card shadow-sm border-0 p-4 text-center">
-            <h5 className="text-muted">Active Employees</h5>
-            <h2 className="display-5 fw-bold text-success">{stats.activeEmployees}</h2>
-          </div>
-        </div>
-
-        <div className="col-md-4">
-          <div className="card shadow-sm border-0 p-4 text-center">
-            <h5 className="text-muted">Total Project Budget</h5>
-            <h2 className="display-5 fw-bold text-success">{stats.totalBudget.toLocaleString()} UAH</h2>
-          </div>
+        <h1 className="display-3 fw-bold">HR-Portal</h1>
+        <p className="lead mt-3">Your central team management system.</p>
+        <hr className="my-4 border-light" />
+        <p>Manage employees, view projects, and track project progress.</p>
+        <div className="d-flex justify-content-center gap-3 mt-4">
+          <Link to="/employees" className="btn btn-light btn-lg">List employees</Link>
+          <Link to="/dashboard" className="btn btn-outline-light btn-lg">Go to analitics</Link>
         </div>
       </div>
     </main>

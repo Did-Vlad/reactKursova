@@ -38,27 +38,23 @@ function Main({ employees }) {
         </div>
       </div>
 
-      <div className="row align-items-center mb-4">
-        <div className="col-md-4">
-          <label className="mb-2">Фільтр за статусом:</label>
-          <select 
-            className="form-select" 
-            value={filterStatus} 
-            onChange={(e) => setFilterStatus(e.target.value)}
-          >
-            <option value="All">All employees</option>
-            <option value="Активний">Active</option>
-            <option value="Звільнений">Fired</option>
-          </select>
-        </div>
+  <div className="row align-items-center mb-4">
+    <div className="col-md-4">
+      <label className="mb-2">Фільтр за статусом:</label>
+        <select className="form-select" value={filterStatus} onChange={(e) => setFilterStatus(e.target.value)}>
+          <option value="All">All employees</option>
+          <option value="Активний">Active</option>
+          <option value="Звільнений">Fired</option>
+        </select>
       </div>
+    </div>
 
       <div className="row g-4">
         {filteredEmployees.length > 0 ? (
           filteredEmployees.map((emp) => (
             <div className="col-xl-4 col-md-6" key={emp.id}>
               <EmployeeCard {...emp} />
-            </div>
+          </div>
           ))
         ) : (
           <p>No specialists found.</p>

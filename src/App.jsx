@@ -1,9 +1,10 @@
-import React, {useState} from "react";
-import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Main from './Components/Main';
-import Employee from './Components/Employee';
-import EmployeeDetails from './Components/EmployeeDetails';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./Components/Header";
+import Main from "./Components/Main";
+import Employee from "./Components/Employee";
+import EmployeeDetails from "./Components/EmployeeDetails";
+import Dashboard from "./Components/Dashboard";
 
 const initialEmployee = [
   { id: 15, first_name: "Сергій", last_name: "Петренко", midl_name: "Петрович", status: "Звільнений", email: "serg.pt@example.com", phone: "+380501234567" },
@@ -28,18 +29,21 @@ const initialProjects = [
   { id: 12, name: "Testing & QA", budget: 50000 }
 ];
 
-function App(){
-
+function App() {
   const [employees, setEmployees] = useState(initialEmployee);
   const [projects, setProjects] = useState(initialProjects);
-return(
-<Router>
-  <Routes>
-    <Route path="/" element={<Main employees={employees} />} />
-    <Route path="/employees" element={<Employee employees={employees} />} />
-    <Route path="/employee/:id" element={<EmployeeDetails employees={employees} />} />
-  </Routes>
-</Router>      
+
+  return (
+    <Router>
+      <Header /> 
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/employees" element={<Employee employees={employees} />} />
+        <Route path="/employee/:id" element={<EmployeeDetails employees={employees} />} /> 
+        <Route path="/dashboard" element={<Dashboard employees={employees} projects={projects} />} />
+        </Routes>
+    </Router>
   );
 }
+
 export default App;
