@@ -5,7 +5,8 @@ function Dashboard({ employees, projects }) {
   const stats = useMemo(() => {
     const totalEmployees = employees.length;
     const activeEmployees = employees.filter((e) => {
-    const s = e.status ? e.status.toString().toLowerCase().trim() : "";return s === "active" || s === "активний";}).length;
+    const s = e.status ? e.status.toString().toLowerCase().trim() : "";
+    return s === "active" || s === "активний";}).length;
 
     const totalBudget = projects.reduce((acc, proj) => acc + (Number(proj.budget) || 0), 0);
 
