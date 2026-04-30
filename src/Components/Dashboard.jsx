@@ -1,16 +1,17 @@
 import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
 
-function Dashboard({ employees, projects}) {
+function Dashboard({ employees, projects }) {
   const stats = useMemo(() => {
     const totalEmployees = employees.length;
-    const activeEmployees = employees.filter((e) => e.status === "ACctive").length;
+    const activeEmployees = employees.filter((e) => {
+    const s = e.status ? e.status.toString().toLowerCase().trim() : "";return s === "active" || s === "активний";}).length;
+
     const totalBudget = projects.reduce((acc, proj) => acc + (Number(proj.budget) || 0), 0);
 
     return { totalEmployees, activeEmployees, totalBudget };
   }, [employees, projects]);
 
-  
   return (
     <main className="container py-5">
       <div className="p-5 mb-5 bg-primary text-white rounded-3 shadow">
