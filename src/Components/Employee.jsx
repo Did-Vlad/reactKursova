@@ -53,8 +53,8 @@ function Employee() {
             value={filterStatus}
             onChange={(e) => {
               setFilterStatus(e.target.value);
-              fetchEmployees(e.target.value);
-            }}>
+              fetchEmployees(e.target.value);}}>
+                
             <option value="All">All employees</option>
             <option value="active">Active</option>
             <option value="inactive">Inactive</option>
